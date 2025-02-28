@@ -47,9 +47,37 @@ header {
 }
 
 #chatbox {
-    height: 200px;
+    height: 300px;
     overflow-y: scroll;
     border: 1px solid #ddd;
     padding: 10px;
     margin-bottom: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+#message-area {
+    display: flex;
+    align-items: center;
+}
+
+#user-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+#message-area button {
+    background-color: #4CAF50;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#message-area button img {
+    width: 20px;
+    height: 20px;
 }

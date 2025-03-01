@@ -32,8 +32,8 @@ function getBotResponse(userInput) {
         "how to improve mental health": "Improving mental health can involve regular exercise, healthy eating, getting enough sleep, and talking to a mental health professional.",
         "what is depression": "Depression is a common mental health disorder characterized by persistent sadness and a lack of interest or pleasure in previously rewarding or enjoyable activities.",
         "how to deal with stress": "Dealing with stress can involve relaxation techniques, exercise, talking to someone you trust, and managing your time effectively.",
-        "what is anxiety": "Anxiety is a feeling of worry, nervousness, or unease about something with an uncertain outcome. It's a normal response to stress but can become a disorder if it interferes with daily life."
-        "how to overcome from anger issue ": "Overcoming anger issues can involve recognizing triggers, practicing relaxation techniques, and seeking support from a mental
+        "what is anxiety": "Anxiety is a feeling of worry, nervousness, or unease about something with an uncertain outcome. It's a normal response to stress but can become a disorder if it interferes with daily life.",
+        "how to overcome from anger issue": "Overcoming anger issues can involve recognizing triggers, practicing relaxation techniques, and seeking support from a mental health professional."
     };
 
     // Default response if input doesn't match predefined responses

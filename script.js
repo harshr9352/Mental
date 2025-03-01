@@ -1,4 +1,14 @@
-function sendMessage() {
+/*
+Run this model in Javascript
+
+> npm install @azure-rest/ai-inference @azure/core-auth @azure/core-sse
+*/
+import ModelClient, { isUnexpected } from "@azure-rest/ai-inference";
+import { AzureKeyCredential } from "@azure/core-auth";
+
+const token = process.env["GITHUB_TOKEN"];
+
+async function sendMessage() {
     let input = document.getElementById("user-input").value;
     let chatbox = document.getElementById("chatbox");
 
@@ -6,8 +16,10 @@ function sendMessage() {
         let userMessage = `<p><strong>You:</strong> ${input}</p>`;
         chatbox.innerHTML += userMessage;
 
-        // Provide a predefined response
-        let botMessage = getBotResponse(input);
+        console.log("Sending message:", input); // Log the message being sent
+
+        // Await the bot response
+        let botMessage = await getBotResponse(input);
         chatbox.innerHTML += `<p><strong>Bot:</strong> ${botMessage}</p>`;
         chatbox.scrollTop = chatbox.scrollHeight;
     }
@@ -15,33 +27,38 @@ function sendMessage() {
     document.getElementById("user-input").value = "";
 }
 
-function getBotResponse(userInput) {
-    // Simple predefined responses
-    const responses = {
-        "hello": "Hi there! How can I assist you today?",
-        "how are you": "I'm just a bot, but I'm here to help you!",
-        "what is your name": "I'm your friendly NEURO-BOOSTING Ai.",
-        "bye": "Goodbye! Take care!",
-        "i need help": "Sure, I'm here to help. What do you need assistance with?",
-        "thank you": "You're welcome! If you have any other questions, feel free to ask.",
-        "what can you do": "I can provide information and support for mental health. How can I assist you today?",
-        "tell me a joke": "Why don't scientists trust atoms? Because they make up everything!",
-        "i feel sad": "I'm sorry to hear that. It's important to talk to someone who can help. How can I support you?",
-        "i feel anxious": "It's okay to feel anxious sometimes. Try taking deep breaths and focusing on something positive.",
-        "what is mental health": "Mental health includes our emotional, psychological, and social well-being. It affects how we think, feel, and act.",
-        "how to improve mental health": "Improving mental health can involve regular exercise, healthy eating, getting enough sleep, and talking to a mental health professional.",
-        "what is depression": "Depression is a common mental health disorder characterized by persistent sadness and a lack of interest or pleasure in previously rewarding or enjoyable activities.",
-        "how to deal with stress": "Dealing with stress can involve relaxation techniques, exercise, talking to someone you trust, and managing your time effectively.",
-        "what is anxiety": "Anxiety is a feeling of worry, nervousness, or unease about something with an uncertain outcome. It's a normal response to stress but can become a disorder if it interferes with daily life.",
-        "how to overcome from anger issue": "Overcoming anger issues can involve recognizing triggers, practicing relaxation techniques, and seeking support from a mental health professional."
-    };
+async function getBotResponse(userInput) {
+    const client = ModelClient(
+        "https://models.github.ai/inference",
+        new AzureKeyCredential(token)
+    );
 
-    // Default response if input doesn't match predefined responses
-    return responses[userInput.toLowerCase()] || "I'm here to help. Can you please elaborate?";
+    console.log("Requesting response from DeepSeek API..."); // Log API request
+
+    const response = await client.path("/chat/completions").post({
+        body: {
+            messages: [
+                { role: "user", content: userInput }
+            ],
+            model: "DeepSeek-R1",
+            max_tokens: 2048,
+        }
+    });
+
+    if (isUnexpected(response)) {
+        console.error("Unexpected response:", response.body.error); // Log unexpected response
+        throw response.body.error;
+    }
+    return response.body.choices[0].message.content; // Return the response from DeepSeek
 }
 
 document.getElementById("user-input").addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
         sendMessage();
     }
+});
+
+// Add event listener for the send button
+document.getElementById("send-button").addEventListener("click", function() {
+    sendMessage();
 });

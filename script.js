@@ -20,7 +20,7 @@ function getBotResponse(userInput) {
     const responses = {
         "hello": "Hi there! How can I assist you today?",
         "how are you": "I'm just a bot, but I'm here to help you!",
-        "what is your name": "I'm your friendly AI chatbot.",
+        "what is your name": "I'm your friendly NEURO-BOOSTING Ai.",
         "bye": "Goodbye! Take care!",
         "i need help": "Sure, I'm here to help. What do you need assistance with?",
         "thank you": "You're welcome! If you have any other questions, feel free to ask.",
@@ -33,6 +33,7 @@ function getBotResponse(userInput) {
         "what is depression": "Depression is a common mental health disorder characterized by persistent sadness and a lack of interest or pleasure in previously rewarding or enjoyable activities.",
         "how to deal with stress": "Dealing with stress can involve relaxation techniques, exercise, talking to someone you trust, and managing your time effectively.",
         "what is anxiety": "Anxiety is a feeling of worry, nervousness, or unease about something with an uncertain outcome. It's a normal response to stress but can become a disorder if it interferes with daily life."
+        "how to overcome from anger issue ": "Overcoming anger issues can involve recognizing triggers, practicing relaxation techniques, and seeking support from a mental
     };
 
     // Default response if input doesn't match predefined responses

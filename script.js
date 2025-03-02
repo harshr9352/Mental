@@ -22,7 +22,7 @@ async function sendMessage() {
 }
 
 async function getGeminiResponse(userMessage) {
-    const apiKey = ""; // TODO: Insert your actual Gemini API key here
+    const apiKey = "AIzaSyCwP8vjOSP-Ay9b2WJdSL1eNdAhg3yn6DU"; // Inserted actual Gemini API key here
 
     const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent'; // Actual Gemini API endpoint
 
@@ -41,7 +41,9 @@ async function getGeminiResponse(userMessage) {
 
         if (!response.ok) {
             const errorResponse = await response.json();
-            console.error('Error response:', errorResponse); // Log the entire response for debugging
+        console.error('Error response:', errorResponse); // Log the entire response for debugging
+        console.error('Response status:', response.status); // Log the response status for additional context
+
             alert('An error occurred while fetching the response. Please try again.'); // Notify the user
 
             throw new Error(`Error: ${response.statusText}`);
@@ -58,6 +60,8 @@ async function getGeminiResponse(userMessage) {
         }
     } catch (error) {
         console.error('Error fetching Gemini response:', error);
+        alert('An error occurred while fetching the response. Please check the console for more details.'); // Notify the user
+
         return 'Sorry, I am unable to process your request at the moment.';
     }
 }

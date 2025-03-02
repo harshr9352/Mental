@@ -1,12 +1,10 @@
-import fetch from 'node-fetch';
-
 async function sendMessage() {
     console.log("sendMessage function called"); // Log when the function is called
 
     let input = document.getElementById("user-input").value;
     let chatbox = document.getElementById("chatbox");
 
-    if (input.trim() !== "") {
+    if (input && input.trim() !== "") {
         let userMessage = `<p><strong>You:</strong> ${input}</p>`;
         chatbox.innerHTML += userMessage;
 
@@ -24,7 +22,8 @@ async function sendMessage() {
 }
 
 async function getGeminiResponse(userMessage) {
-    const apiKey = ""; // Replace with your actual Gemini API key
+    const apiKey = ""; // TODO: Insert your actual Gemini API key here
+
     const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent'; // Actual Gemini API endpoint
 
     try {
@@ -41,13 +40,27 @@ async function getGeminiResponse(userMessage) {
         });
 
         if (!response.ok) {
+            const errorResponse = await response.json();
+            console.error('Error response:', errorResponse); // Log the entire response for debugging
+            alert('An error occurred while fetching the response. Please try again.'); // Notify the user
+
             throw new Error(`Error: ${response.statusText}`);
         }
 
         const data = await response.json();
-        return data.contents[0].parts[0].text; // Adjust based on the actual response structure
+        if (data.contents && data.contents[0] && data.contents[0].parts[0]) {
+            return data.contents[0].parts[0].text; // Adjust based on the actual response structure
+        } else {
+            console.error('Unexpected response structure:', data); // Log unexpected structure
+            alert('Unexpected response structure received. Please check the API response.'); // Notify the user
+
+            return 'Sorry, I am unable to process your request at the moment.';
+        }
     } catch (error) {
         console.error('Error fetching Gemini response:', error);
         return 'Sorry, I am unable to process your request at the moment.';
     }
 }
+
+// Make the sendMessage function globally accessible
+window.sendMessage = sendMessage;

@@ -22,9 +22,9 @@ async function sendMessage() {
 }
 
 async function getGeminiResponse(userMessage) {
-    const apiKey = "AIzaSyCwP8vjOSP-Ay9b2WJdSL1eNdAhg3yn6DU"; // Inserted actual Gemini API key here
+    const apiKey = "Enter your api key"; // Inserted actual Gemini API key here
 
-    const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent'; // Actual Gemini API endpoint
+    const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent'; 
 
     try {
         const response = await fetch(`${url}?key=${apiKey}`, {
@@ -41,30 +41,28 @@ async function getGeminiResponse(userMessage) {
 
         if (!response.ok) {
             const errorResponse = await response.json();
-        console.error('Error response:', errorResponse); // Log the entire response for debugging
-        console.error('Response status:', response.status); // Log the response status for additional context
-
+            console.error('Error response:', errorResponse); // Log the entire response for debugging
             alert('An error occurred while fetching the response. Please try again.'); // Notify the user
 
             throw new Error(`Error: ${response.statusText}`);
         }
 
         const data = await response.json();
-        if (data.contents && data.contents[0] && data.contents[0].parts[0]) {
-            return data.contents[0].parts[0].text; // Adjust based on the actual response structure
+        console.log('Full response data:', data); // Log the entire response data
+
+        let apiResponse = data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts && data.candidates[0].content.parts[0];
+        if (apiResponse) {
+            return apiResponse.text; // Adjust based on the actual response structure
         } else {
             console.error('Unexpected response structure:', data); // Log unexpected structure
-            alert('Unexpected response structure received. Please check the API response.'); // Notify the user
+            alert('Unexpected response structure received. Please check the API response.'); 
 
             return 'Sorry, I am unable to process your request at the moment.';
         }
     } catch (error) {
         console.error('Error fetching Gemini response:', error);
-        alert('An error occurred while fetching the response. Please check the console for more details.'); // Notify the user
-
         return 'Sorry, I am unable to process your request at the moment.';
     }
 }
 
-// Make the sendMessage function globally accessible
 window.sendMessage = sendMessage;

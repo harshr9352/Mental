@@ -22,9 +22,9 @@ async function sendMessage() {
 }
 
 async function getGeminiResponse(userMessage) {
-    const apiKey = "enter api key"; // TODO: Insert your actual Gemini API key here
+    const apiKey = "AIzaSyCwP8vjOSP-Ay9b2WJdSL1eNdAhg3yn6DU"; // Inserted actual Gemini API key here
 
-    const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent'; // Actual Gemini API endpoint
+    const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent'; 
 
     try {
         const response = await fetch(`${url}?key=${apiKey}`, {
@@ -55,7 +55,7 @@ async function getGeminiResponse(userMessage) {
             return apiResponse.text; // Adjust based on the actual response structure
         } else {
             console.error('Unexpected response structure:', data); // Log unexpected structure
-            alert('Unexpected response structure received. Please check the API response.'); // Notify the user
+            alert('Unexpected response structure received. Please check the API response.'); 
 
             return 'Sorry, I am unable to process your request at the moment.';
         }
@@ -65,5 +65,4 @@ async function getGeminiResponse(userMessage) {
     }
 }
 
-// Make the sendMessage function globally accessible
 window.sendMessage = sendMessage;

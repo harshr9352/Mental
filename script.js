@@ -22,7 +22,7 @@ async function sendMessage() {
 }
 
 async function getGeminiResponse(userMessage) {
-    const apiKey = ""; // TODO: Insert your actual Gemini API key here
+    const apiKey = "enter api key"; // TODO: Insert your actual Gemini API key here
 
     const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent'; // Actual Gemini API endpoint
 
@@ -48,8 +48,11 @@ async function getGeminiResponse(userMessage) {
         }
 
         const data = await response.json();
-        if (data.contents && data.contents[0] && data.contents[0].parts[0]) {
-            return data.contents[0].parts[0].text; // Adjust based on the actual response structure
+        console.log('Full response data:', data); // Log the entire response data
+
+        let apiResponse = data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts && data.candidates[0].content.parts[0];
+        if (apiResponse) {
+            return apiResponse.text; // Adjust based on the actual response structure
         } else {
             console.error('Unexpected response structure:', data); // Log unexpected structure
             alert('Unexpected response structure received. Please check the API response.'); // Notify the user

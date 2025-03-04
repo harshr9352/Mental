@@ -22,7 +22,7 @@ async function sendMessage() {
 }
 
 async function getGeminiResponse(userMessage) {
-    const apiKey = "AIzaSyCwP8vjOSP-Ay9b2WJdSL1eNdAhg3yn6DU"; // Inserted actual Gemini API key here
+    const apiKey = "Enter your api key"; // Inserted actual Gemini API key here
 
     const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent'; 
 

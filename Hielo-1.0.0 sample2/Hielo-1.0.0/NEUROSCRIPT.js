@@ -13,7 +13,7 @@ function createChatBox(html, className) {
 }
 
 async function getGeminiResponse(userMessage, aiChatBox) {
-  const apiKey = "enter your api "
+  const apiKey = "AIzaSyCvP8vjOSP-Ay9b2WJdSL1eNdAhg3yn6DU"
 
   const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
 

@@ -1,5 +1,5 @@
 async function sendMessage() {
-    console.log("sendMessage function called"); // Log when the function is called
+    console.log("sendMessage function called"); // Log when t
 
     let input = document.getElementById("user-input").value;
     let chatbox = document.getElementById("chatbox");
@@ -22,7 +22,7 @@ async function sendMessage() {
 }
 
 async function getGeminiResponse(userMessage) {
-    const apiKey = "Enter your api key"; // Inserted actual Gemini API key here
+    const apiKey = "AIzaSyCvP8vjOSP-Ay9b2WJdSL1eNdAhg3yn6DU"; // Inserted actual Gemini API key here
 
     const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent'; 
 

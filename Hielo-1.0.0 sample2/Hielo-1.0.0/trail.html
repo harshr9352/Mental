@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Therapist</title>
+  <style>
+    /* Reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Set up a simple layout */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f8ff;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  color: #007BFF;
+  font-size: 2rem;
+}
+
+header p {
+  color: #555;
+  font-size: 1rem;
+}
+
+/* Style the form */
+.booking-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.booking-form label {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #333;
+}
+
+.booking-form input,
+.booking-form textarea,
+.booking-form button {
+  margin-top: 0.5rem;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.booking-form input[type="text"],
+.booking-form input[type="email"],
+.booking-form input[type="tel"],
+.booking-form input[type="date"],
+.booking-form input[type="time"] {
+  background-color: #fafafa;
+}
+
+.booking-form textarea {
+  resize: vertical;
+}
+
+.booking-form button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.booking-form button:hover {
+  background-color: #0056b3;
+}
+
+.booking-form button:focus {
+  outline: none;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Book a Therapist</h1>
+      <p>Your mental health matters. Book a session with a therapist today.</p>
+    </header>
+    
+    <form class="booking-form">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required>
+      
+      <label for="email">Your Email</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+      
+      <label for="date">Preferred Date</label>
+      <input type="date" id="date" name="date" required>
+      
+      <label for="time">Preferred Time</label>
+      <input type="time" id="time" name="time" required>
+      
+      <label for="message">Additional Information</label>
+      <textarea id="message" name="message" placeholder="Tell us a bit more about what you're going through" rows="4"></textarea>
+      
+      <button type="submit">Book Now</button>
+    </form>
+  </div>
+</body>
+</html>

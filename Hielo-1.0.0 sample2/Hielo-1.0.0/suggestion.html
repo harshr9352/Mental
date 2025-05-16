@@ -198,7 +198,7 @@
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background: linear-gradient(45deg, #FFFFFF, #CCCCCC);
+      background: linear-gradient(45deg, #0e0d0d, #121c70);
       color: #1A1A1A;
       padding: 15px;
       border-radius: 50%;
@@ -351,6 +351,30 @@
       50% { opacity: 0.5; color: #E0E0E0; }
       100% { opacity: 1; color: #FFFFFF; }
     }
+    #backtohome{
+     background-color: #0e0d0d;
+    color: #FFFFFF;
+    text-decoration: wavy;
+    font-family: 'Times New Roman', Times, serif;
+    border-radius: 5px;
+    height: 56px;
+    width: 100px;
+    border-radius: 10px;
+    border: none;
+    transition: 1s;
+    }
+    #backtohome:hover{
+   background-color: #ffffff;
+    color: #0a0808;
+    text-decoration: wavy;
+    font-family: 'Times New Roman', Times, serif;
+    border-radius: 5px;
+    height: 60px;
+    width: 105px;
+    border-radius: 10px;
+    border: none;
+    transition: 1s;
+    }
   </style>
 </head>
 <body>
@@ -360,7 +384,7 @@
   <header>
     <nav>
       <div class="logo"> Neuroboost AI Wellness Hub</div> 
-      <div> <a href="index.html"><button> Back to Home</button> </a></div>
+      <div> <a href="index.html"><button id="backtohome"> Back to Home</button> </a></div>
     </nav>
   </header>
   <!-- AI Mood Selector -->
@@ -518,7 +542,7 @@
   </section>
 
   <!-- Chatbot Placeholder -->
-  <div class="chatbot">💬</div>
+   <a href="NEUROCHATBOT.html"><div class="chatbot">💬</div></a>
 
   <script>
     // Particle Background
@@ -645,11 +669,11 @@
     });
 
     // AI Mood Selector with Typewriter Effect
-    const moodContent = {
-      calm: 'Try<br> a 5-minute guided meditation or a nature walk to soothe your mind.',
-      uplift: 'Write down three things you’re grateful for or dance to your favorite song!',
-      focus: 'Practice mindfulness or organize your workspace for clarity.'
-    };
+    //const moodContent = {
+    //calm: 'Try <br> a 5-minute guided meditation or a nature walk to soothe your mind.',
+    // uplift: 'Write down three things you’re grateful for or dance to your favorite song!',
+    // focus: 'Practice mindfulness or organize your workspace for clarity.'
+    //};
 
     function typeWriter(text, element, callback) {
       element.innerText = '';
@@ -690,9 +714,9 @@
     });
 
     // Chatbot Placeholder
-    document.querySelector('.chatbot').addEventListener('click', () => {
-      alert('AI Chatbot coming soon! It will offer personalized mental health tips.');
-    });
+    //document.querySelector('.chatbot').addEventListener('click', () => {
+    // alert('AI Chatbot coming soon! It will offer personalized mental health tips.');
+    // });
   </script>
 </body>
 </html>

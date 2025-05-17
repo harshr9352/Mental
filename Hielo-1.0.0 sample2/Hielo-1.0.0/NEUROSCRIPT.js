@@ -42,7 +42,7 @@ async function getGeminiResponse(userMessage, aiChatBox) {
 function showLoading() {
   const html = `
     <div id="img">
-      <img src="ai.png" alt="">
+      <img src="chatboximage/Untitled design.png" alt="">
     </div>
     <div class="text"></div>
     <img src="loading.gif" alt="" height="50" class="loading">
